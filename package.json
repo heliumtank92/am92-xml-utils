@@ -3,13 +3,12 @@
   "version": "1.0.2",
   "description": "Interpolate XML and Convert XML to JSON",
   "type": "module",
-  "main": "dist/index.js",
+  "main": "src/index.mjs",
   "module": "src/index.mjs",
   "scripts": {
-    "test": "jest",
-    "build": "rimraf dist/ && babel src/ --out-dir dist/ --copy-files",
+    "test": "echo 'Error: no test specified'",
     "preversion": "pnpm test",
-    "version": "pnpm run build && git add -A dist",
+    "version": "echo 'Versioning'",
     "postversion": "git push && git push --tags"
   },
   "repository": "git@github.com:heliumtank92/am92-xml-utils.git",
@@ -28,25 +27,13 @@
   ],
   "license": "MIT",
   "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "default": "./src/index.mjs"
-    }
+    ".": "./src/index.mjs"
   },
   "dependencies": {
     "camaro": "^6.2.0",
     "pug": "^3.0.2"
   },
-  "devDependencies": {
-    "@babel/cli": "^7.20.7",
-    "@babel/core": "^7.20.7",
-    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
-    "@babel/preset-env": "^7.20.2",
-    "babel-jest": "^29.3.1",
-    "babel-plugin-module-extension": "^0.1.3",
-    "jest": "^29.3.1",
-    "rimraf": "^3.0.2"
-  },
+  "devDependencies": {},
   "keywords": [
     "xml",
     "xml parser",
