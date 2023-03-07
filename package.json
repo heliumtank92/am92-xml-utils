@@ -1,6 +1,6 @@
 {
   "name": "@am92/xml-utils",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Interpolate XML and Convert XML to JSON",
   "type": "module",
   "main": "./index.mjs",
