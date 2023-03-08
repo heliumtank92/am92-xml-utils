@@ -3,13 +3,26 @@
   "version": "1.0.9",
   "description": "Interpolate XML and Convert XML to JSON",
   "type": "module",
-  "main": "./index.mjs",
-  "module": "./index.mjs",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.mts",
+      "import": "./src/index.mjs"
+    }
+  },
+  "types": "./types/index.d.mts",
+  "module": "./src/index.mjs",
+  "main": "./src/index.mjs",
+  "dependencies": {
+    "camaro": "^6.2.0",
+    "pug": "^3.0.2"
+  },
   "scripts": {
     "test": "echo 'Error: no test specified'",
+    "generate:types": "rm -rf types && npx -p typescript tsc",
     "preversion": "pnpm test",
     "version": "echo 'Versioning'",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags && npm run publish:pkg",
+    "publish:pkg": "npm publish"
   },
   "repository": "git@github.com:heliumtank92/am92-xml-utils.git",
   "homepage": "https://github.com/heliumtank92/am92-xml-utils#readme",
@@ -26,14 +39,9 @@
     }
   ],
   "license": "MIT",
-  "exports": {
-    ".": "./index.mjs"
+  "publishConfig": {
+    "access": "public"
   },
-  "dependencies": {
-    "camaro": "^6.2.0",
-    "pug": "^3.0.2"
-  },
-  "devDependencies": {},
   "keywords": [
     "xml",
     "xml parser",
