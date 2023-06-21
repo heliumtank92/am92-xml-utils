@@ -119,15 +119,15 @@ export default class XmlUtils {
 }
 
 /**
- * Internal function to generate a random UUID in Base64 format.
+ * Internal function to generate a random UUID string in Radix 36 format. Length of UUID is 12.
  *
  * @ignore
  * @returns
  */
 function _generateRandomId(): string {
   const now = new Date().getTime()
-  const random = Math.trunc(Math.random() * 1000)
-  return Buffer.from(`${random}${now}`).toString('base64')
+  const random = Math.trunc(Math.random() * 100000)
+  return parseInt(`${random}${now}`, 10).toString(36)
 }
 
 /**
