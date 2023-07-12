@@ -50,6 +50,7 @@ $ npm install --save @am92/xml-utils
 ## Resources
 * [Pug](https://www.npmjs.com/package/pug)
 * [Camaro](https://www.npmjs.com/package/camaro)
+* [MIME Types](https://www.npmjs.com/package/mime-types)
 
 <br />
 
