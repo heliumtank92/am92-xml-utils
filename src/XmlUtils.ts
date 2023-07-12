@@ -1,6 +1,7 @@
 import { transform } from 'camaro'
 import pug, { LocalsObject } from 'pug'
 import mimeTypes from 'mime-types'
+import { randomId } from '@am92/utils-string'
 
 import XmlError from './XmlError'
 import {
@@ -11,7 +12,7 @@ import {
   INVALID_XML_TO_JSON_XML_ARGS_ERROR,
   INVALID_XML_TO_JSON_XPATH_ARGS_ERROR
 } from './ERRORS'
-import { FileAttachment, XmlWithAttachment } from './TYPES'
+import { FileAttachment, MultipartXml } from './TYPES'
 
 export default class XmlUtils {
   /**
@@ -64,7 +65,7 @@ export default class XmlUtils {
     xml: string,
     xmlContentType: string,
     attachment: FileAttachment
-  ): XmlWithAttachment {
+  ): MultipartXml {
     if (!xml) {
       throw new XmlError(undefined, INVALID_ADD_ATTACHMENT_XML_ARGS_ERROR)
     }
@@ -85,8 +86,8 @@ export default class XmlUtils {
 
     const { fileName, file } = attachment
     const mimeType = attachment.mimeType || mimeTypes.lookup(fileName)
-    const boundary = `----=_Part_1_${_generateRandomId()}`
-    const startContentId = `<rootpart.${_generateRandomId()}>`
+    const boundary = `----=_Part_1_${randomId(16)}`
+    const startContentId = `<rootpart.${randomId(16)}>`
     const fileString = _getFileString(file)
 
     const multipartXml = [
@@ -99,35 +100,25 @@ export default class XmlUtils {
       `--${boundary}`,
       `Content-Type: ${mimeType}; name=${fileName}`,
       'Content-Transfer-Encoding: base64',
-      `Content-ID: <${fileName}-${_generateRandomId()}>`,
+      `Content-ID: <${fileName}-${randomId(16)}>`,
       '',
       fileString,
       `--${boundary}--`
     ].join('\n')
 
-    const contentType = `multipart/related; type="${xmlContentType}"; start="${startContentId}"; boundary="${boundary}"`
+    const headers = {
+      'Content-Type': `multipart/related; type="${xmlContentType}"; start="${startContentId}"; boundary="${boundary}"`
+    }
 
-    const data: XmlWithAttachment = {
+    const data: MultipartXml = {
       multipartXml,
+      headers,
       boundary,
-      startContentId,
-      contentType
+      startContentId
     }
 
     return data
   }
-}
-
-/**
- * Internal function to generate a random UUID string in Radix 36 format. Length of UUID is 12.
- *
- * @ignore
- * @returns
- */
-function _generateRandomId(): string {
-  const now = new Date().getTime()
-  const random = Math.trunc(Math.random() * 100000)
-  return parseInt(`${random}${now}`, 10).toString(36)
 }
 
 /**

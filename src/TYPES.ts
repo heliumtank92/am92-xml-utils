@@ -1,3 +1,5 @@
+import { OutgoingHttpHeaders } from 'http'
+
 /**
  * Type defination for error map to be passed to XmlError.
  *
@@ -34,13 +36,17 @@ export interface FileAttachment {
  * Interface for return value of addAttachment utility.
  *
  * @interface
- * @typedef {XmlWithAttachment}
+ * @typedef {MultipartXml}
  */
-export interface XmlWithAttachment {
+export interface MultipartXml {
   /**
    * Multipart XML string with XML data and file attachment
    */
   multipartXml: string
+  /**
+   * Multipart XML Header
+   */
+  headers: { [key: string]: string }
   /**
    * Multipart boundary.
    */
@@ -49,8 +55,4 @@ export interface XmlWithAttachment {
    * Multipart XML string's start 'Content-ID'
    */
   startContentId: string
-  /**
-   * Multipart Content-Type header value.
-   */
-  contentType: string
 }

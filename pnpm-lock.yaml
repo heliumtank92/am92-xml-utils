@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@am92/utils-string':
+    specifier: ^2.0.2
+    version: 2.0.2
   camaro:
     specifier: ^6.2.0
     version: 6.2.0
@@ -43,6 +46,10 @@ packages:
   /@aduh95/viz.js@3.4.0:
     resolution: {integrity: sha512-KI2nVf9JdwWCXqK6RVf+9/096G7VWN4Z84mnynlyZKao2xQENW8WNEjLmvdlxS5X8PNWXFC1zqwm7tveOXw/4A==}
     dev: true
+
+  /@am92/utils-string@2.0.2:
+    resolution: {integrity: sha512-IjlaLitW4MVd4l4lfidf4szAofB+rtkkYTUjycgQxogjKZoZz/AwZ01FQN1PiyK2a9xn3HpvgkuT94QcB1xZMw==}
+    dev: false
 
   /@ampproject/remapping@2.2.1:
     resolution: {integrity: sha512-lFMjJTrFL3j7L9yBxwYfCq2k6qqwHyzuUl/XBnif78PWTJYyL/dfowQHWE3sp6U6ZzqWiiIZnpTMO96zhkjwtg==}
