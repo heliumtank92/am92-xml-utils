@@ -78,7 +78,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/FileAttachment.html" data-type="entity-link" >FileAttachment</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/XmlWithAttachment.html" data-type="entity-link" >XmlWithAttachment</a>
+                                <a href="interfaces/MultipartXml.html" data-type="entity-link" >MultipartXml</a>
                             </li>
                         </ul>
                     </li>
