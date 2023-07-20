@@ -1,6 +1,6 @@
 {
   "name": "@am92/xml-utils",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Interpolate XML and Convert XML to JSON",
   "sideEffects": false,
   "types": "dist/index.d.ts",
@@ -11,7 +11,7 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@am92/utils-string": "^2.0.2",
+    "@am92/utils-string": "^2.0.3",
     "camaro": "^6.2.0",
     "mime-types": "^2.1.35",
     "pug": "^3.0.2"
