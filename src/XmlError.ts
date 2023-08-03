@@ -15,7 +15,7 @@ const DEFAULT_ERROR_CODE = 'XML_UTILS_ERROR'
  * @typedef {XmlError}
  * @extends {Error}
  */
-export default class XmlError extends Error {
+export class XmlError extends Error {
   /**
    * Flag to identify if error is a custom error.
    */
