@@ -3,7 +3,7 @@ import pug, { LocalsObject } from 'pug'
 import mimeTypes from 'mime-types'
 import { randomId } from '@am92/utils-string'
 
-import XmlError from './XmlError'
+import { XmlError } from './XmlError'
 import {
   INVALID_ADD_ATTACHMENT_ATTACHMENT_ARGS_ERROR,
   INVALID_ADD_ATTACHMENT_XML_ARGS_ERROR,
@@ -14,7 +14,7 @@ import {
 } from './ERRORS'
 import { FileAttachment, MultipartXml } from './TYPES'
 
-export default class XmlUtils {
+export class XmlUtils {
   /**
    * Function to interpolate an XML string with data.
    *
@@ -121,13 +121,7 @@ export default class XmlUtils {
   }
 }
 
-/**
- * Internal function to convert file to a Base64 string.
- *
- * @ignore
- * @param file File data as Base64 string or ArrayBuffer.
- * @returns
- */
+/** @ignore */
 function _getFileString(file: string | ArrayBuffer): string {
   if (typeof file === 'string') {
     return file
