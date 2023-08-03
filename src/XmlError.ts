@@ -53,7 +53,7 @@ export class XmlError extends Error {
    * @param [eMap] XmlErrorMap to rewrap error for better understanding.
    */
   constructor(e?: any, eMap?: XmlErrorMap) {
-    if (e._isCustomError && !eMap) {
+    if (e?._isCustomError && !eMap) {
       return e
     }
 
